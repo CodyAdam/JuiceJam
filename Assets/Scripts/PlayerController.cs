@@ -11,15 +11,6 @@ public class PlayerController : MonoBehaviour
     {
         rb = GetComponent<Rigidbody>();
     }
-
-    private void OnTriggerStay(Collider other)
-    { //Si on est sur le sol, on peut autorise le saut
-        if (other.gameObject.tag == "Ground" || other.gameObject.tag == "Car")
-        {
-            isGrounded = true;
-        }
-    }
-
     public void onJump()
     {
         GetComponent<Rigidbody>().isKinematic = false;
