@@ -517,7 +517,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 89d26ad854cbb464da65c34f0fc1eca2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  force: 3.06
   isGrounded: 1
   playerFeetCollider: {fileID: 0}
 --- !u!114 &675708442

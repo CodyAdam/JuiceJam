@@ -4,7 +4,6 @@ using UnityEngine;
 
 public class PlayerController : MonoBehaviour
 {
-    public float force = 0.6f;
     public bool isGrounded = false;
     public BoxCollider playerFeetCollider;
     Rigidbody rb;
@@ -15,7 +14,7 @@ public class PlayerController : MonoBehaviour
 
     private void OnTriggerStay(Collider other)
     { //Si on est sur le sol, on peut autorise le saut
-        if (other.gameObject.tag == "Ground")
+        if (other.gameObject.tag == "Ground" || other.gameObject.tag == "Car")
         {
             isGrounded = true;
         }
