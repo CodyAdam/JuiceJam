@@ -95,6 +95,7 @@ GameObject:
   - component: {fileID: 4244476196760700331}
   - component: {fileID: 4244476196760700328}
   - component: {fileID: 4244476196760700335}
+  - component: {fileID: 9145164400776034382}
   m_Layer: 0
   m_Name: Car
   m_TagString: Car
@@ -146,6 +147,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   player: {fileID: 0}
   speed: 0.001
+  ragdollTime: 3.63
 --- !u!54 &4244476196760700335
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -162,6 +164,19 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 84
   m_CollisionDetection: 1
+--- !u!65 &9145164400776034382
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4244476196760700329}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 2.45, y: 1.26, z: 0.79}
+  m_Center: {x: 0, y: 0, z: 1.36}
 --- !u!1 &7592551338771559925
 GameObject:
   m_ObjectHideFlags: 0

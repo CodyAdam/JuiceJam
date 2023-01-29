@@ -405,7 +405,7 @@ GameObject:
   - component: {fileID: 675708443}
   m_Layer: 0
   m_Name: Player
-  m_TagString: Untagged
+  m_TagString: Player
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -519,6 +519,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   isGrounded: 1
   playerFeetCollider: {fileID: 0}
+  force: 5
 --- !u!114 &675708442
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -737,7 +738,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   car: {fileID: 4244476196760700329, guid: 6ffb1bb2ed515924e87872464f3d2e55, type: 3}
   cooldown: 2
-  speed: 0.5
+  speed: 1.5
   player: {fileID: 675708435}
   spawnRay: 50
 --- !u!4 &1535510438
@@ -768,7 +769,7 @@ GameObject:
   - component: {fileID: 1748398130}
   - component: {fileID: 1748398129}
   - component: {fileID: 1748398133}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Ground
   m_TagString: Ground
   m_Icon: {fileID: 0}

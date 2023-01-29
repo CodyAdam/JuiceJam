@@ -6,15 +6,51 @@ public class CarController : MonoBehaviour
 {
     public GameObject player;
     public float speed = 0.3f;
+
+    private bool isDead = false;
+
     Rigidbody rb;
+
+    public float ragdollForce = 5f;
+    public float ragdollTorque = 5f;
+
+    public float ragdollTime = 3f;
 
     void Start()
     {
         rb = GetComponent<Rigidbody>();
     }
 
+    private void OnTriggerEnter(Collider other)
+    {
+        if (!isDead && other.gameObject.tag == "Player")
+        {
+            OnDeath();
+        }
+    }
+
+    private void OnDeath()
+    {
+        isDead = true;
+        rb.constraints = RigidbodyConstraints.None;
+        rb.AddForce(Vector3.up * ragdollForce, ForceMode.Impulse);
+        rb.AddTorque(Vector3.right * ragdollTorque, ForceMode.Impulse);
+        // remove collission from the car
+        gameObject.layer = LayerMask.NameToLayer("Ragdoll");
+        // start coroutine to destroy the car after a few seconds
+        StartCoroutine(DestroyCar());
+    }
+
+    IEnumerator DestroyCar()
+    {
+        yield return new WaitForSeconds(ragdollTime);
+        Destroy(gameObject);
+    }
+
     void FixedUpdate()
     {
+        if (isDead)
+            return;
         // move the car towards the player 
         rb.AddForce(transform.forward * speed, ForceMode.Impulse);
 
