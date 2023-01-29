@@ -15,6 +15,8 @@ public class CarController : MonoBehaviour
 
     void FixedUpdate()
     {
-        rb.velocity = (player.transform.position - transform.position).normalized * speed;
+        // move the car towards the player while looking at the player
+        transform.LookAt(player.transform);
+        rb.AddForce(transform.forward * speed, ForceMode.Impulse);
     }
 }
