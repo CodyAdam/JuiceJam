@@ -7,10 +7,10 @@ using UnityEngine.Rendering;
 public class JumpArea : MonoBehaviour
 {
     public CarController car;
-    public GameObject carHead;
+    public GameObject playerAnchor;
     private GameObject player;
     private Rigidbody playerBody;
-    bool isAttached = false;
+    public bool isAttached = false;
 
     private void OnTriggerEnter(Collider other)
     {
@@ -25,6 +25,8 @@ public class JumpArea : MonoBehaviour
     void Snap(GameObject player)
     {
         player.transform.parent = car.transform;
+        player.transform.position = playerAnchor.transform.position;
+        player.transform.rotation = playerAnchor.transform.rotation;
         playerBody.isKinematic = true;
         isAttached = true;
     }

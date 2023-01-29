@@ -61,6 +61,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   car: {fileID: 4244476196760700328}
   carHead: {fileID: 0}
+  playerAnchor: {fileID: 2332585363885242054}
 --- !u!114 &1832410473009389251
 MonoBehaviour:
   m_ObjectHideFlags: 0

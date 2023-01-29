@@ -46,11 +46,25 @@ public class CarController : MonoBehaviour
     {
         if (isDead)
             return;
-        // move the car towards the player 
-        rb.AddForce(transform.forward * speed, ForceMode.Impulse);
 
-        // rotate the car to look at the player in the Y axis only
-        Vector3 targetPosition = new Vector3(player.transform.position.x, transform.position.y, player.transform.position.z);
-        transform.LookAt(targetPosition);
+        if (jumpArea.isAttached)
+        {
+            Vector3 rand = new Vector3(Random.value, Random.value, Random.value);
+            // move the car towards the player 
+            rb.AddForce(rand * speed, ForceMode.Impulse);
+
+            // rotate the car to look at the player in the Y axis only
+            transform.LookAt(rand);
+        }
+
+        else
+        {
+            // move the car towards the player 
+            rb.AddForce(transform.forward * speed, ForceMode.Impulse);
+
+            // rotate the car to look at the player in the Y axis only
+            Vector3 targetPosition = new Vector3(player.transform.position.x, transform.position.y, player.transform.position.z);
+            transform.LookAt(targetPosition);
+        }
     }
 }
