@@ -147,6 +147,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   player: {fileID: 0}
   speed: 0.001
+  ragdollForce: 10
+  ragdollTorque: 20
   ragdollTime: 3.63
 --- !u!54 &4244476196760700335
 Rigidbody:
