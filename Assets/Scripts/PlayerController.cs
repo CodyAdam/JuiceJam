@@ -15,16 +15,9 @@ public class PlayerController : MonoBehaviour
 
     private void OnTriggerStay(Collider other)
     { //Si on est sur le sol, on peut autorise le saut
-        if (other.gameObject.tag == "Ground")
+        if (other.gameObject.tag == "Ground" || other.gameObject.tag == "Car")
         {
             isGrounded = true;
-        }
-
-        else if (other.gameObject.tag == "Car")
-        {
-            isGrounded = true;
-            transform.IsChildOf(other.gameObject.transform);
-            transform.position = transform.parent.position;
         }
     }
 
@@ -34,7 +27,6 @@ public class PlayerController : MonoBehaviour
         {
             rb.AddForce(Vector3.up * force, ForceMode.Impulse);
             isGrounded = false;
-            transform.parent = null;
         }
     }
 }
