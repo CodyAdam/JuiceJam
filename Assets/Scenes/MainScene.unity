@@ -402,6 +402,7 @@ GameObject:
   - component: {fileID: 675708440}
   - component: {fileID: 675708441}
   - component: {fileID: 675708442}
+  - component: {fileID: 675708443}
   m_Layer: 0
   m_Name: Player
   m_TagString: Untagged
@@ -517,6 +518,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   force: 3.06
+  isGrounded: 1
+  playerFeetCollider: {fileID: 0}
 --- !u!114 &675708442
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -580,6 +583,19 @@ MonoBehaviour:
   m_DefaultActionMap: Player
   m_SplitScreenIndex: -1
   m_Camera: {fileID: 0}
+--- !u!65 &675708443
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 675708435}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 1, y: 0.52, z: 1}
+  m_Center: {x: 0, y: -0.42, z: 0}
 --- !u!1 &678841474
 GameObject:
   m_ObjectHideFlags: 0
@@ -754,7 +770,7 @@ GameObject:
   - component: {fileID: 1748398133}
   m_Layer: 0
   m_Name: Ground
-  m_TagString: Untagged
+  m_TagString: Ground
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
