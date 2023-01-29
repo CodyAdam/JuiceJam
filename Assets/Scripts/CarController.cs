@@ -7,7 +7,7 @@ public class CarController : MonoBehaviour
     public GameObject player;
     public float speed = 0.3f;
 
-    private bool isDead = false;
+    public bool isDead = false;
 
     Rigidbody rb;
 
@@ -21,15 +21,7 @@ public class CarController : MonoBehaviour
         rb = GetComponent<Rigidbody>();
     }
 
-    private void OnTriggerEnter(Collider other)
-    {
-        if (!isDead && other.gameObject.tag == "Player")
-        {
-            OnDeath();
-        }
-    }
-
-    private void OnDeath()
+    public void OnDeath()
     {
         isDead = true;
         rb.constraints = RigidbodyConstraints.None;
