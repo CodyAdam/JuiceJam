@@ -6,6 +6,7 @@ public class PlayerController : MonoBehaviour
 {
     public bool isGrounded = false;
     public BoxCollider playerFeetCollider;
+    public float force = 5f;
     Rigidbody rb;
     void Start()
     {
