@@ -16,8 +16,6 @@ public class CameraController : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        transform.rotation.x= rotX;
-        transform.rotation.z= rotZ;
         if (Input.GetMouseButton(0))
         {
             transform.eulerAngles += 5 * new Vector3(x: transform.rotation.x, y: Input.GetAxis("Mouse X"));
