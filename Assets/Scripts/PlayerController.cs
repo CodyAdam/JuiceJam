@@ -18,13 +18,6 @@ public class PlayerController : MonoBehaviour
         {
             isGrounded = true;
         }
-
-        else if (other.gameObject.tag == "Car")
-        {
-            isGrounded = true;
-            transform.IsChildOf(other.gameObject.transform);
-            transform.position = transform.parent.position;
-        }
     }
 
     public void onJump()
