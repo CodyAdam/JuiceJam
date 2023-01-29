@@ -738,7 +738,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   car: {fileID: 4244476196760700329, guid: 6ffb1bb2ed515924e87872464f3d2e55, type: 3}
   cooldown: 2
-  speed: 10
+  speed: 0.5
   player: {fileID: 675708435}
   spawnRay: 50
 --- !u!4 &1535510438
