@@ -22,6 +22,7 @@ public class PlayerController : MonoBehaviour
 
     public void onJump()
     {
+        GetComponent<Rigidbody>().isKinematic = false;
         if (isGrounded) //si on est pas sur le sol, la fonction le fait rien
         {
             rb.AddForce(Vector3.up * force, ForceMode.Impulse);

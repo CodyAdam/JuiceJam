@@ -5,6 +5,8 @@ using UnityEngine;
 public class CarController : MonoBehaviour
 {
     public GameObject player;
+    public JumpArea jumpArea;
+
     public float speed = 0.3f;
 
     public bool isDead = false;
@@ -24,6 +26,7 @@ public class CarController : MonoBehaviour
     public void OnDeath()
     {
         isDead = true;
+        jumpArea.Detach();
         rb.constraints = RigidbodyConstraints.None;
         rb.AddForce(Vector3.up * ragdollForce, ForceMode.Impulse);
         rb.AddTorque(Vector3.right * ragdollTorque, ForceMode.Impulse);
