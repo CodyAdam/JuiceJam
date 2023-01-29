@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class CameraController : MonoBehaviour
 {
-    public GameObject camera;
+    public GameObject player;
     // Start is called before the first frame update
     void Start()
     {
@@ -16,7 +16,7 @@ public class CameraController : MonoBehaviour
     {
         if (Input.GetMouseButton(0))
         {
-            transform.eulerAngles += 5 * new Vector3(x: -Input.GetAxis("Mouse Y"), y: Input.GetAxis("Mouse X"));
+            transform.eulerAngles += 5 * new Vector3(x: transform.rotation.x, y: Input.GetAxis("Mouse X"));
         }
     }
 }
