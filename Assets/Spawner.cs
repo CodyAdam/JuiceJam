@@ -26,7 +26,7 @@ public class Spawner : MonoBehaviour
         float angle = Random.Range(0, 360);
         float x = spawnRay * Mathf.Cos(angle);
         float z = spawnRay * Mathf.Sin(angle);
-        return new Vector3(x, 1, z);
+        return new Vector3(x, car.transform.localScale.y/2, z);
     }
 
     IEnumerator Spawn()
