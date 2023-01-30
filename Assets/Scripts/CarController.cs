@@ -51,6 +51,7 @@ public class CarController : MonoBehaviour
 
         if (jumpArea.isAttached)
         {
+            rb.drag = 1.2f;
             // select a random point in space and move the car towards it for X frames
             if (framesToMove > 0 && Vector2.Distance(new Vector2(transform.position.x, transform.position.z), targetPosition) > 10f)
             {
@@ -71,6 +72,7 @@ public class CarController : MonoBehaviour
         }
         else
         {
+            rb.drag = 1f;
             // rotate the car to look at the player in the Y axis only
             Vector3 targetPosition = new Vector3(player.transform.position.x, transform.position.y, player.transform.position.z);
 

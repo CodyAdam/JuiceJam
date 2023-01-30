@@ -24,9 +24,13 @@ public class Spawner : MonoBehaviour
     private Vector3 GetRandomPointOnPerimeter()
     {
         float angle = Random.Range(0, 360);
-        float x = spawnRay * Mathf.Cos(angle);
-        float z = spawnRay * Mathf.Sin(angle);
-        return new Vector3(x, car.transform.localScale.y/2, z);
+        Vector3 center = transform.position;
+        center.y = 1;
+        Vector3 pos;
+        pos.x = center.x + spawnRay * Mathf.Sin(angle * Mathf.Deg2Rad);
+        pos.y = center.y;
+        pos.z = center.z + spawnRay * Mathf.Cos(angle * Mathf.Deg2Rad);
+        return pos;
     }
 
     IEnumerator Spawn()
