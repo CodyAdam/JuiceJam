@@ -3,6 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Rendering;
+using DG.Tweening;
 
 public class JumpArea : MonoBehaviour
 {
@@ -25,10 +26,13 @@ public class JumpArea : MonoBehaviour
     void Snap(GameObject player)
     {
         player.transform.parent = car.transform;
-        player.transform.position = playerAnchor.transform.position;
-        player.transform.rotation = playerAnchor.transform.rotation;
         playerBody.isKinematic = true;
         isAttached = true;
+        // use dotween to move the player to the anchor position
+        // player.transform.position = playerAnchor.transform.position;
+        // player.transform.rotation = playerAnchor.transform.rotation;
+
+        player.transform.DOLocalMove(playerAnchor.transform.localPosition, .2f).SetEase(Ease.InCubic);
     }
 
 

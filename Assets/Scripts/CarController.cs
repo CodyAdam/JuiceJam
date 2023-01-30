@@ -16,6 +16,8 @@ public class CarController : MonoBehaviour
     public float ragdollForce = 5f;
     public float ragdollTorque = 5f;
 
+    private int framesToMove = 0;
+    private Vector3 targetPosition;
     public float ragdollTime = 3f;
 
     void Start()
@@ -49,22 +51,34 @@ public class CarController : MonoBehaviour
 
         if (jumpArea.isAttached)
         {
-            Vector3 rand = new Vector3(Random.value, Random.value, Random.value);
-            // move the car towards the player 
-            rb.AddForce(rand * speed, ForceMode.Impulse);
-
-            // rotate the car to look at the player in the Y axis only
-            transform.LookAt(rand);
+            // select a random point in space and move the car towards it for X frames
+            if (framesToMove > 0 && Vector2.Distance(new Vector2(transform.position.x, transform.position.z), targetPosition) > 10f)
+            {
+                targetPosition = new Vector3(targetPosition.x, transform.position.y, targetPosition.y);
+                // move the car towards the target position
+                rb.AddForce((targetPosition-transform.position).normalized * speed, ForceMode.Impulse);
+                // rotate the car to look at the velocity direction
+                transform.LookAt(transform.position + new Vector3(rb.velocity.x, transform.position.y, rb.velocity.z));
+                // decrease the frames counter
+                framesToMove--;
+            }
+            else
+            {
+                // select a new random point in space and reset the frames counter
+                targetPosition = new Vector3(Random.Range(-400, 400), transform.position.y,  Random.Range(-400, 400));
+                framesToMove = 400;
+            }
         }
-
         else
         {
-            // move the car towards the player 
-            rb.AddForce(transform.forward * speed, ForceMode.Impulse);
-
             // rotate the car to look at the player in the Y axis only
             Vector3 targetPosition = new Vector3(player.transform.position.x, transform.position.y, player.transform.position.z);
-            transform.LookAt(targetPosition);
+
+            // move the car towards the player 
+            rb.AddForce((targetPosition-transform.position).normalized * speed, ForceMode.Impulse);
+
+            // rotate the car to look at the velocity direction
+            transform.LookAt(transform.position + new Vector3(rb.velocity.x, transform.position.y, rb.velocity.z));
         }
     }
 }
