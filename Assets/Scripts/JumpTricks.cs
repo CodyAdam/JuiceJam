@@ -9,6 +9,8 @@ public class JumpTricks : MonoBehaviour
     public float rotationSpeed = 20f;
     public PlayerController player;
 
+    public float scaleDuration = 0.1f;
+    public float scaleForce = 1.3f;
     void Start()
     {
         rb = GetComponent<Rigidbody>();
@@ -21,9 +23,9 @@ public class JumpTricks : MonoBehaviour
             rb.constraints = RigidbodyConstraints.FreezePosition;
             rb.AddTorque(Vector3.up * rotationSpeed, ForceMode.Impulse);
             // make the Y scale bounce
-            transform.DOScaleY(1.3f, 0.1f).SetEase(Ease.InCubic).OnComplete(() =>
+            transform.DOScaleY(scaleForce, scaleDuration).SetEase(Ease.InCubic).OnComplete(() =>
             {
-                transform.DOScaleY(1f, 0.1f).SetEase(Ease.OutCubic);
+                transform.DOScaleY(1f, scaleDuration).SetEase(Ease.OutCubic);
             });
         }
     }

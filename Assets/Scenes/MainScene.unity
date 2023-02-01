@@ -567,6 +567,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   isGrounded: 1
   force: 8
+  tree: {fileID: 7835211314036057753}
+  isSnapping: 0
 --- !u!114 &675708442
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -643,7 +645,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   minFov: 80
-  maxFov: 130
+  maxFov: 140
   minCamDist: 10
   maxCamDist: 4
   speedToMax: 50
@@ -835,8 +837,8 @@ MonoBehaviour:
   m_LookaheadTime: 0
   m_LookaheadSmoothing: 0
   m_LookaheadIgnoreY: 1
-  m_HorizontalDamping: 0.1
-  m_VerticalDamping: 0.1
+  m_HorizontalDamping: 0
+  m_VerticalDamping: 0
   m_ScreenX: 0.5
   m_ScreenY: 0.5
   m_DeadZoneWidth: 0
@@ -1617,7 +1619,6 @@ GameObject:
   - component: {fileID: 7835211314033877600}
   - component: {fileID: 7835211314036057754}
   - component: {fileID: 7835211314036057753}
-  - component: {fileID: 7835211314036057755}
   m_Layer: 0
   m_Name: Tree
   m_TagString: Untagged
@@ -1637,8 +1638,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 415617fb928fc1c498853bb832a2ee9c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  rotationSpeed: 20
+  rotationSpeed: 40
   player: {fileID: 675708441}
+  scaleDuration: 0.14
+  scaleForce: 1.4
 --- !u!54 &7835211314036057754
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -1649,72 +1652,9 @@ Rigidbody:
   serializedVersion: 2
   m_Mass: 1
   m_Drag: 0
-  m_AngularDrag: 5
+  m_AngularDrag: 2
   m_UseGravity: 1
   m_IsKinematic: 0
   m_Interpolate: 0
   m_Constraints: 94
   m_CollisionDetection: 0
---- !u!114 &7835211314036057755
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7835211314036057752}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 62899f850307741f2a39c98a8b639597, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  m_Actions: {fileID: -944628639613478452, guid: f8b3d85f9e310e547972c77c70097fbd,
-    type: 3}
-  m_NotificationBehavior: 2
-  m_UIInputModule: {fileID: 0}
-  m_DeviceLostEvent:
-    m_PersistentCalls:
-      m_Calls: []
-  m_DeviceRegainedEvent:
-    m_PersistentCalls:
-      m_Calls: []
-  m_ControlsChangedEvent:
-    m_PersistentCalls:
-      m_Calls: []
-  m_ActionEvents:
-  - m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 7835211314036057753}
-        m_TargetAssemblyTypeName: JumpTricks, Assembly-CSharp
-        m_MethodName: OnJump
-        m_Mode: 1
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
-    m_ActionId: 7e973e17-ee17-41af-ba91-268604fea628
-    m_ActionName: Player/Jump[/Keyboard/space]
-  - m_PersistentCalls:
-      m_Calls: []
-    m_ActionId: 1d98bcc1-6ffe-4203-9c74-c43fa7305617
-    m_ActionName: UI/Up[/Keyboard/upArrow]
-  - m_PersistentCalls:
-      m_Calls: []
-    m_ActionId: 306445da-21c0-414c-a4e5-ce4a90ef56aa
-    m_ActionName: UI/Down[/Keyboard/downArrow]
-  - m_PersistentCalls:
-      m_Calls: []
-    m_ActionId: fdf2a2bb-861a-4f0d-9897-cb19f5549150
-    m_ActionName: UI/Select[/Keyboard/enter,/Keyboard/space]
-  - m_PersistentCalls:
-      m_Calls: []
-    m_ActionId: 7ad9e33e-5604-4e6e-ac36-17267713f85e
-    m_ActionName: UI/Cancel[/Keyboard/escape,/Keyboard/backspace]
-  m_NeverAutoSwitchControlSchemes: 0
-  m_DefaultControlScheme: 
-  m_DefaultActionMap: Player
-  m_SplitScreenIndex: -1
-  m_Camera: {fileID: 0}
