@@ -31,8 +31,8 @@ public class CarController : MonoBehaviour
 
     public void OnDeath()
     {
-        isDead = true;
         jumpArea.Detach();
+        isDead = true;
         rb.constraints = RigidbodyConstraints.None;
         rb.AddForce(Vector3.up * ragdollForce, ForceMode.Impulse);
         rb.AddTorque(Vector3.right * ragdollTorque, ForceMode.Impulse);

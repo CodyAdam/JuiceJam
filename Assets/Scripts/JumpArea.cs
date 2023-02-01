@@ -49,6 +49,7 @@ public class JumpArea : MonoBehaviour
     {
         if (isAttached)
         {
+            player.transform.DOKill();
             player.transform.parent = null;
             Rigidbody treeRb = playerController.tree.GetComponent<Rigidbody>();
             treeRb.constraints = RigidbodyConstraints.FreezePosition;
