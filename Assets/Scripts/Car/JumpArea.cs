@@ -3,14 +3,10 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using DG.Tweening;
-using TMPro;
-using UnityEditor.SearchService;
-
 public class JumpArea : MonoBehaviour
 {
     public CarController car;
     public GameObject playerAnchor;
-    public TextMeshProUGUI score;
     private GameObject player;
     private PlayerController playerController;
     private Rigidbody playerBody;
@@ -29,7 +25,7 @@ public class JumpArea : MonoBehaviour
 
     void Snap(GameObject player)
     {
-        score.GetComponent<JumpScore>().score += 10;
+        ScoreManager.GetInstance().AddScore("Car roof damage", 450);
         player.transform.parent = car.transform;
         playerBody.isKinematic = true;
         isAttached = true;
@@ -50,6 +46,7 @@ public class JumpArea : MonoBehaviour
         if (isAttached)
         {
             player.transform.DOKill();
+            playerController.isSnapping = false;
             player.transform.parent = null;
             Rigidbody treeRb = playerController.tree.GetComponent<Rigidbody>();
             treeRb.constraints = RigidbodyConstraints.FreezePosition;

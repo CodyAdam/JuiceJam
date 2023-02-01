@@ -9,9 +9,6 @@ public class Spawner : MonoBehaviour
     public float cooldown = 2f;
     public float speed = 0.3f;
     public GameObject player;
-    public TextMeshProUGUI crashScore;
-    public TextMeshProUGUI jumpScore;
-
     public float spawnRay;
 
 
@@ -45,8 +42,6 @@ public class Spawner : MonoBehaviour
             GameObject newCar = Instantiate(car, GetRandomPointOnPerimeter(), transform.rotation);
             newCar.GetComponent<CarController>().player = player;
             newCar.GetComponent<CarController>().speed = speed;
-            newCar.GetComponent<CarController>().crashScore = crashScore;
-            newCar.GetComponent<CarController>().jumpScore = jumpScore;
         }
     }
 }

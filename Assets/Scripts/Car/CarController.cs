@@ -7,8 +7,6 @@ public class CarController : MonoBehaviour
 {
     public GameObject player;
     public JumpArea jumpArea;
-    public TextMeshProUGUI crashScore;
-    public TextMeshProUGUI jumpScore;
 
     public float speed = 0.3f;
 
@@ -26,13 +24,13 @@ public class CarController : MonoBehaviour
     void Start()
     {
         rb = GetComponent<Rigidbody>();
-        jumpArea.score = jumpScore;
     }
 
     public void OnDeath()
     {
-        jumpArea.Detach();
         isDead = true;
+        ScoreManager.GetInstance().AddScore("Car crash", 1200);
+        jumpArea.Detach();
         rb.constraints = RigidbodyConstraints.None;
         rb.AddForce(Vector3.up * ragdollForce, ForceMode.Impulse);
         rb.AddTorque(Vector3.right * ragdollTorque, ForceMode.Impulse);
@@ -44,7 +42,6 @@ public class CarController : MonoBehaviour
 
     IEnumerator DestroyCar()
     {
-        crashScore.GetComponent<JumpScore>().score += 10;
         yield return new WaitForSeconds(ragdollTime);
         Destroy(gameObject);
     }
@@ -62,7 +59,7 @@ public class CarController : MonoBehaviour
             {
                 targetPosition = new Vector3(targetPosition.x, transform.position.y, targetPosition.y);
                 // move the car towards the target position
-                rb.AddForce((targetPosition-transform.position).normalized * speed, ForceMode.Impulse);
+                rb.AddForce((targetPosition - transform.position).normalized * speed, ForceMode.Impulse);
                 // rotate the car to look at the velocity direction
                 transform.LookAt(transform.position + new Vector3(rb.velocity.x, transform.position.y, rb.velocity.z));
                 // decrease the frames counter
@@ -71,7 +68,7 @@ public class CarController : MonoBehaviour
             else
             {
                 // select a new random point in space and reset the frames counter
-                targetPosition = new Vector3(Random.Range(-400, 400), transform.position.y,  Random.Range(-400, 400));
+                targetPosition = new Vector3(Random.Range(-400, 400), transform.position.y, Random.Range(-400, 400));
                 framesToMove = 400;
             }
         }
@@ -82,7 +79,7 @@ public class CarController : MonoBehaviour
             Vector3 targetPosition = new Vector3(player.transform.position.x, transform.position.y, player.transform.position.z);
 
             // move the car towards the player 
-            rb.AddForce((targetPosition-transform.position).normalized * speed, ForceMode.Impulse);
+            rb.AddForce((targetPosition - transform.position).normalized * speed, ForceMode.Impulse);
 
             // rotate the car to look at the velocity direction
             transform.LookAt(transform.position + new Vector3(rb.velocity.x, transform.position.y, rb.velocity.z));
