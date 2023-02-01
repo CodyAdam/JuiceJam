@@ -3,11 +3,14 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using DG.Tweening;
+using TMPro;
+using UnityEditor.SearchService;
 
 public class JumpArea : MonoBehaviour
 {
     public CarController car;
     public GameObject playerAnchor;
+    public TextMeshProUGUI score;
     private GameObject player;
     private Rigidbody playerBody;
     public bool isAttached = false;
@@ -24,6 +27,7 @@ public class JumpArea : MonoBehaviour
 
     void Snap(GameObject player)
     {
+        score.GetComponent<JumpScore>().score += 10;
         player.transform.parent = car.transform;
         playerBody.isKinematic = true;
         isAttached = true;

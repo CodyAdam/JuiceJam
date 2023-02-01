@@ -92,6 +92,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   car: {fileID: 4244476196760700328}
   playerAnchor: {fileID: 139789793640846446}
+  score: {fileID: 8730499440531136370, guid: 88518027d3fa54040a1ba4ebfa0130f9, type: 3}
   isAttached: 0
 --- !u!114 &1832410473009389251
 MonoBehaviour:
