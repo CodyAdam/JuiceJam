@@ -38,4 +38,9 @@ public class ScoreManager : MonoBehaviour
         return totalCost;
     }
 
+    public List<Tuple<string, float>> Get()
+    {
+        return costsList;
+    }
+
 }
