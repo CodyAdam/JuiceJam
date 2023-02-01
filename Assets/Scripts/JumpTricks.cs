@@ -13,10 +13,12 @@ public class JumpTricks : MonoBehaviour
     {
         rb = GetComponent<Rigidbody>();
     }
-    public void OnJump()
+
+    public void DoJumpTrick()
     {
         if (player.isGrounded)
         {
+            rb.constraints = RigidbodyConstraints.FreezePosition;
             rb.AddTorque(Vector3.up * rotationSpeed, ForceMode.Impulse);
             // make the Y scale bounce
             transform.DOScaleY(1.3f, 0.1f).SetEase(Ease.InCubic).OnComplete(() =>

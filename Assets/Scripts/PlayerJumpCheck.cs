@@ -14,6 +14,7 @@ public class PlayerJumpCheck : MonoBehaviour
             if (!onCooldown)
             {
                 playerController.isGrounded = true;
+                playerController.tree.GetComponent<Rigidbody>().constraints = RigidbodyConstraints.FreezeAll;
                 Vector3 treeRotation = tree.transform.rotation.eulerAngles;
                 Vector3 playerRotation = playerController.transform.rotation.eulerAngles;
                 treeRotation.x = 0;
