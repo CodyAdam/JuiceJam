@@ -1,11 +1,14 @@
 using System.Collections;
 using System.Collections.Generic;
+using TMPro;
 using UnityEngine;
 
 public class CarController : MonoBehaviour
 {
     public GameObject player;
     public JumpArea jumpArea;
+    public TextMeshProUGUI crashScore;
+    public TextMeshProUGUI jumpScore;
 
     public float speed = 0.3f;
 
@@ -23,6 +26,7 @@ public class CarController : MonoBehaviour
     void Start()
     {
         rb = GetComponent<Rigidbody>();
+        jumpArea.score = jumpScore;
     }
 
     public void OnDeath()
@@ -40,6 +44,7 @@ public class CarController : MonoBehaviour
 
     IEnumerator DestroyCar()
     {
+        crashScore.GetComponent<JumpScore>().score += 10;
         yield return new WaitForSeconds(ragdollTime);
         Destroy(gameObject);
     }
