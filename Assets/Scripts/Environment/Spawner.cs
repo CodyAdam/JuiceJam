@@ -10,6 +10,7 @@ public class Spawner : MonoBehaviour
     public float speed = 0.3f;
     public GameObject player;
     public float spawnRay;
+    public bool start;
 
 
     void Start()
@@ -35,7 +36,7 @@ public class Spawner : MonoBehaviour
 
     IEnumerator Spawn()
     {
-        while (true)
+        while (start)
         {
             yield return new WaitForSeconds(cooldown);
             // instantiate a car with player as CarController.player
