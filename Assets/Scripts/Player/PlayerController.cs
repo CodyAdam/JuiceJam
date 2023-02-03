@@ -1,4 +1,6 @@
+using UnityEditor.SearchService;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 public class PlayerController : MonoBehaviour
 {
     public bool isGrounded = false;
@@ -22,5 +24,10 @@ public class PlayerController : MonoBehaviour
             tree.DoJumpTrick();
             isGrounded = false;
         }
+    }
+
+    public void OnDeath()
+    {
+        SceneManager.LoadScene("EndScene");
     }
 }
