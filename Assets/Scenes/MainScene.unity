@@ -288,6 +288,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4498f3b39be04884abe9eff2f8eaa63b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  PlayerCamera: {fileID: 330585545}
+  CarCamera: {fileID: 1575112151}
   spawner: {fileID: 1535510436}
   car: {fileID: 1983360464}
   newSprite: {fileID: 21300000, guid: c3678b239bb7cc243b94ceeaefa05745, type: 3}
@@ -1615,7 +1617,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &1585397354
 RectTransform:
   m_ObjectHideFlags: 0
@@ -1653,7 +1655,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 1, g: 1, b: 1, a: 0}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_RaycastTarget: 1
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
