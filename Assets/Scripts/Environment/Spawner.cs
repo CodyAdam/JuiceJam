@@ -10,12 +10,17 @@ public class Spawner : MonoBehaviour
     public float speed = 0.3f;
     public GameObject player;
     public float spawnRay;
-    public bool start;
+    public bool start = false;
+    bool hasStarted = false;
 
 
-    void Start()
+    void Update()
     {
-        StartCoroutine(Spawn());
+        if(start && !hasStarted)
+        {
+            StartCoroutine(Spawn());
+            hasStarted = true;
+        }
     }
 
     /**
@@ -36,7 +41,7 @@ public class Spawner : MonoBehaviour
 
     IEnumerator Spawn()
     {
-        while (start)
+        while (true)
         {
             yield return new WaitForSeconds(cooldown);
             // instantiate a car with player as CarController.player
