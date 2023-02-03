@@ -6,6 +6,8 @@ using UnityEngine.UI;
 
 public class GameStart : MonoBehaviour
 {
+    public Camera PlayerCamera;
+    public Camera CarCamera;
     public GameObject spawner;
     public GameObject car;
     public Sprite newSprite;
@@ -14,7 +16,8 @@ public class GameStart : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        
+        PlayerCamera.enabled= false;
+        CarCamera.enabled = true;
     }
 
     // Update is called once per frame
@@ -27,10 +30,13 @@ public class GameStart : MonoBehaviour
             tuto.text = "ESQUIVE!!! APPUI SUR ESPACE";
         }
 
-        if(Input.GetKeyDown(KeyCode.Escape))
+        if(Input.GetKeyDown(KeyCode.Space))
         {
+            PlayerCamera.enabled = true;
+            CarCamera.enabled = false;
             spawner.GetComponent<Spawner>().start = true;
-            bill.color = Color.white;
+            bill.gameObject.SetActive(true);
+            Destroy(gameObject);
         }
     }
 }
