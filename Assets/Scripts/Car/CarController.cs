@@ -31,7 +31,6 @@ public class CarController : MonoBehaviour
     public void OnDeath()
     {
         // play the explosion particle system
-        explosion.Play();
         isDead = true;
         ScoreManager.GetInstance().AddScore("Car crash", 1200);
         jumpArea.Detach();
@@ -42,6 +41,7 @@ public class CarController : MonoBehaviour
         gameObject.layer = LayerMask.NameToLayer("Ragdoll");
         // start coroutine to destroy the car after a few seconds
         StartCoroutine(DestroyCar());
+        explosion.Play();
     }
 
     IEnumerator DestroyCar()
