@@ -12,7 +12,8 @@ public class CarController : MonoBehaviour
 
     public bool isDead = false;
 
-    public ParticleSystem explosion;
+    public GameObject explosion;
+    public GameObject exploSFX;
 
     Rigidbody rb;
 
@@ -41,7 +42,8 @@ public class CarController : MonoBehaviour
         gameObject.layer = LayerMask.NameToLayer("Ragdoll");
         // start coroutine to destroy the car after a few seconds
         StartCoroutine(DestroyCar());
-        explosion.Play();
+        explosion.SetActive(true);
+        exploSFX.SetActive(true);
     }
 
     IEnumerator DestroyCar()

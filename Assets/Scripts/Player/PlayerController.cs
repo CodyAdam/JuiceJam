@@ -1,3 +1,4 @@
+using System.Collections;
 using UnityEditor.SearchService;
 using UnityEngine;
 using UnityEngine.SceneManagement;
@@ -28,6 +29,20 @@ public class PlayerController : MonoBehaviour
 
     public void OnDeath()
     {
+        // wait for the animation to finish
+        // then load the end scene
+        return;
+        Rigidbody treeRb = tree.GetComponent<Rigidbody>();
+        treeRb.constraints = RigidbodyConstraints.None;
+        rb.AddForce(Vector3.up * force * 3, ForceMode.Impulse);
+        treeRb.AddTorque(Vector3.up * force + Vector3.right * 1.3f * force, ForceMode.Impulse);
+        tree.gameObject.layer = LayerMask.NameToLayer("Ragdoll");
+        StartCoroutine(DeathAnimation());
+    }
+
+    private IEnumerator DeathAnimation()
+    {
+        yield return new WaitForSeconds(2f);
         SceneManager.LoadScene("EndScene");
     }
 }

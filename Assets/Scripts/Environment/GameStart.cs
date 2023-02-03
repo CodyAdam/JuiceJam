@@ -19,6 +19,7 @@ public class GameStart : MonoBehaviour
     {
         if (skipTutorial)
         {
+            car.SetActive(false);
             PlayerCamera.enabled = true;
             CarCamera.enabled = false;
             spawner.GetComponent<Spawner>().start = true;
