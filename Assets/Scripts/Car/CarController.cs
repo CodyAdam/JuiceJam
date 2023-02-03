@@ -12,6 +12,8 @@ public class CarController : MonoBehaviour
 
     public bool isDead = false;
 
+    public ParticleSystem explosion;
+
     Rigidbody rb;
 
     public float ragdollForce = 5f;
@@ -28,6 +30,8 @@ public class CarController : MonoBehaviour
 
     public void OnDeath()
     {
+        // play the explosion particle system
+        explosion.Play();
         isDead = true;
         ScoreManager.GetInstance().AddScore("Car crash", 1200);
         jumpArea.Detach();
