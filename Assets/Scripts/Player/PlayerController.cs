@@ -8,6 +8,7 @@ public class PlayerController : MonoBehaviour
     public float force;
     public JumpTricks tree;
     public bool isSnapping = false;
+    public AudioSource jumpSound;
     Rigidbody rb;
     void Start()
     {
@@ -18,6 +19,9 @@ public class PlayerController : MonoBehaviour
         GetComponent<Rigidbody>().isKinematic = false;
         if (isGrounded && !isSnapping) //si on est pas sur le sol, la fonction le fait rien
         {
+            jumpSound.gameObject.GetComponent<SfxRandomPitch>().ChangePitch();
+            jumpSound.Play();
+
             Vector3 newVelocity = rb.velocity;
             newVelocity.y = 0;
             rb.velocity = newVelocity;

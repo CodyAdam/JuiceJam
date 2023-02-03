@@ -12,6 +12,11 @@ public class SfxRandomPitch : MonoBehaviour
     void Awake()
     {
         audioSource = GetComponent<AudioSource>();
+        ChangePitch();
+    }
+
+    public void ChangePitch()
+    {
         audioSource.pitch = Random.Range(minPitch, maxPitch);
     }
 }
