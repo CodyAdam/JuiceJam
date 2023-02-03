@@ -9,22 +9,21 @@ public class GameStart : MonoBehaviour
     public bool skipTutorial = false;
     public Camera PlayerCamera;
     public Camera CarCamera;
-    public GameObject spawner;
+    public Spawner spawner;
     public GameObject car;
-    public Sprite newSprite;
-    public Image bill;
-    public TextMeshProUGUI tuto;
+    public GameObject bill;
+    public GameObject tuto;
+
+    public GameObject player;
+
+    private bool isStarted = false;
+    private bool isTuto = false;
     // Start is called before the first frame update
     void Start()
     {
         if (skipTutorial)
         {
-            car.SetActive(false);
-            PlayerCamera.enabled = true;
-            CarCamera.enabled = false;
-            spawner.GetComponent<Spawner>().start = true;
-            bill.gameObject.SetActive(true);
-            Destroy(gameObject);
+            StartGame();
         }
         else
         {
@@ -33,23 +32,44 @@ public class GameStart : MonoBehaviour
         }
     }
 
-    // Update is called once per frame
-    void Update()
+    void FixedUpdate()
     {
-        if (car.transform.position.z >= -50)
+        // dist player car is less than 10
+        if (Vector3.Distance(player.transform.position, car.transform.position) < 100)
         {
-            GetComponent<Image>().color = Color.white;
-            GetComponent<Image>().sprite = newSprite;
-            tuto.text = "ESQUIVE!!! APPUI SUR ESPACE";
+            TriggerTutorial();
         }
 
-        if (Input.GetKeyDown(KeyCode.Space))
+        if (!isStarted && car.GetComponent<CarController>().isDead)
         {
-            PlayerCamera.enabled = true;
-            CarCamera.enabled = false;
-            spawner.GetComponent<Spawner>().start = true;
-            bill.gameObject.SetActive(true);
+            StartGame();
+        }
+
+        if (isStarted)
+        {
             Destroy(gameObject);
         }
+    }
+    void TriggerTutorial()
+    {
+        if (isTuto || isStarted)
+            return;
+
+        isTuto = true;
+        tuto.SetActive(true);
+    }
+
+    public void StartGame()
+
+    {
+        if (isStarted)
+            return;
+
+        isStarted = true;
+        PlayerCamera.enabled = true;
+        CarCamera.enabled = false;
+        spawner.start = true;
+        tuto.SetActive(false);
+        bill.SetActive(true);
     }
 }

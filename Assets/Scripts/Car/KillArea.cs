@@ -10,7 +10,7 @@ public class KillArea : MonoBehaviour
         if (!car.isDead && (other.gameObject.tag == "Player"))
         {
             car.OnDeath();
-            other.GetComponent<PlayerController>().OnDeath();
+            other.GetComponent<PlayerController>().OnHit();
         }
 
         if (!car.isDead && (other.gameObject.tag == "Car"))
