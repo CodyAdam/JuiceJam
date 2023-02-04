@@ -2508,6 +2508,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 83051c4d8fb8a0947aaa3edfbbd8c634, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  moneyPrefab: {fileID: 4149427803677563675, guid: 43852cc34fab1704cae63c8f41ad0e25,
+    type: 3}
 --- !u!4 &1728648567
 Transform:
   m_ObjectHideFlags: 0

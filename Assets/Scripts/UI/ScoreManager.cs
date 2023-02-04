@@ -8,6 +8,9 @@ public class ScoreManager : MonoBehaviour
     public List<Tuple<string, float>> costsList = new List<Tuple<string, float>>();
     private float totalCost = 0;
 
+    public GameObject moneyPrefab;
+    private GameObject canvas;
+
     private void Awake()
     {
         if (instance == null)
@@ -32,6 +35,15 @@ public class ScoreManager : MonoBehaviour
 
     public void AddScore(string name, float cost)
     {
+        if (canvas == null)
+        {
+            GetCanvas();
+        }
+        if (moneyPrefab != null && canvas != null)
+        {
+            GameObject money = Instantiate(moneyPrefab, canvas.transform);
+            money.GetComponent<PopMoneyUI>().Init((int)cost);
+        }
         costsList.Add(new Tuple<string, float>(name, cost));
         totalCost += cost;
     }
@@ -50,5 +62,10 @@ public class ScoreManager : MonoBehaviour
     {
         costsList.Clear();
         totalCost = 0;
+    }
+
+    private void GetCanvas()
+    {
+        canvas = GameObject.Find("Canvas");
     }
 }
