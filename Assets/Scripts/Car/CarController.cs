@@ -88,7 +88,7 @@ public class CarController : MonoBehaviour
             rb.AddForce((targetPosition - transform.position).normalized * speed, ForceMode.Impulse);
 
             // rotate the car to look at the velocity direction
-            transform.LookAt(transform.position + new Vector3(rb.velocity.x, transform.position.y, rb.velocity.z));
+            transform.LookAt(transform.position + new Vector3(rb.velocity.x, transform.position.y, rb.velocity.z) + targetPosition.normalized * .1f);
         }
     }
 }

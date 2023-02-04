@@ -13,10 +13,18 @@ public class Spawner : MonoBehaviour
     public bool start = false;
     bool hasStarted = false;
 
+    private float selectedCooldown;
+    private float selectedSpeed;
+
+    void Start()
+    {
+        selectedCooldown = cooldown;
+        selectedSpeed = speed;
+    }
 
     void Update()
     {
-        if(start && !hasStarted)
+        if (start && !hasStarted)
         {
             StartCoroutine(Spawn());
             hasStarted = true;
@@ -43,11 +51,41 @@ public class Spawner : MonoBehaviour
     {
         while (true)
         {
-            yield return new WaitForSeconds(cooldown);
+            SelectParams();
+            yield return new WaitForSeconds(selectedCooldown);
             // instantiate a car with player as CarController.player
             GameObject newCar = Instantiate(car, GetRandomPointOnPerimeter(), transform.rotation);
             newCar.GetComponent<CarController>().player = player;
-            newCar.GetComponent<CarController>().speed = speed;
+            newCar.GetComponent<CarController>().speed = selectedSpeed;
+        }
+    }
+
+    void SelectParams()
+    {
+        selectedCooldown = this.cooldown;
+        selectedSpeed = this.speed;
+        float score = ScoreManager.GetInstance().GetTotalCost();
+
+        // to select : cooldown, speed
+        if (score > 40000)
+        {
+            selectedCooldown = cooldown * 0.01f;
+            selectedSpeed = speed * 5f;
+        }
+        else if (score > 20000)
+        {
+            selectedCooldown = cooldown * 0.1f;
+            selectedSpeed = speed * 3f;
+        }
+        else if (score > 10000)
+        {
+            selectedCooldown = cooldown * 0.3f;
+            selectedSpeed = speed * 2f;
+        }
+        else if (score > 5000)
+        {
+            selectedCooldown = cooldown * 0.5f;
+            selectedSpeed = speed * 1.2f;
         }
     }
 }

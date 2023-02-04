@@ -31,6 +31,18 @@ public class PlayerController : MonoBehaviour
         rb = GetComponent<Rigidbody>();
         treeMeshFilter.mesh = tree3life;
     }
+
+
+    void FixedUpdate()
+    {
+        if (transform.position.y < -10)
+        {
+            // pos to 000
+            onJump();
+            transform.position = Vector3.zero;
+        }
+    }
+
     public void onJump()
     {
         GetComponent<Rigidbody>().isKinematic = false;

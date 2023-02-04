@@ -54,8 +54,6 @@ public class GameStart : MonoBehaviour
     {
         if (isTuto || isStarted)
             return;
-        // Slow down the time 
-        Time.timeScale = 0.5f;
         isTuto = true;
         tuto.SetActive(true);
     }
@@ -66,7 +64,6 @@ public class GameStart : MonoBehaviour
         if (isStarted)
             return;
 
-        Time.timeScale = 1f;
         isStarted = true;
         PlayerCamera.enabled = true;
         CarCamera.enabled = false;
