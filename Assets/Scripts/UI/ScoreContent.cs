@@ -3,12 +3,12 @@ using System.Collections;
 using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class ScoreContent : MonoBehaviour
 {
     public TextMeshProUGUI labelsText;
     public TextMeshProUGUI costsText;
-
     void FixedUpdate()
     {
         string labels = "";

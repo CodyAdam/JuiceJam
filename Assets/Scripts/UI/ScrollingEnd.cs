@@ -11,7 +11,13 @@ public class ScrollingEnd : MonoBehaviour
     void Start()
     {
         rectTransform = GetComponent<RectTransform>();
+        StartCoroutine(Scroll());
+    }
+
+    private IEnumerator Scroll()
+    {
+        yield return new WaitForSeconds(1f);
         float height = rectTransform.rect.height;
-        rectTransform.DOLocalMoveY(height + 100f, 15f).SetEase(Ease.OutCirc).SetDelay(1f);
+        rectTransform.DOLocalMoveY(height + 100f, 15f).SetEase(Ease.OutCirc);
     }
 }

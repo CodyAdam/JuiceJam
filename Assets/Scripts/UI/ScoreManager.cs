@@ -10,9 +10,11 @@ public class ScoreManager : MonoBehaviour
 
     private void Awake()
     {
-        DontDestroyOnLoad(gameObject);
         if (instance == null)
+        {
+            DontDestroyOnLoad(gameObject);
             instance = this;
+        }
         else
             Destroy(gameObject);
     }
@@ -44,4 +46,9 @@ public class ScoreManager : MonoBehaviour
         return costsList;
     }
 
+    public void Reset()
+    {
+        costsList.Clear();
+        totalCost = 0;
+    }
 }

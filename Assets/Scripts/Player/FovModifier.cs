@@ -23,7 +23,7 @@ public class FovModifier : MonoBehaviour
     }
 
     void FixedUpdate()
-    {    
+    {
         GameObject current = gameObject;
         float speed = rb.velocity.magnitude;
         while (current.transform.parent != null)
@@ -36,9 +36,10 @@ public class FovModifier : MonoBehaviour
         }
         float fov = Mathf.Lerp(minFov, maxFov, speed / speedToMax);
         float dist = Mathf.Lerp(minCamDist, maxCamDist, speed / speedToMax);
-
-        cam.m_Lens.FieldOfView = Mathf.Lerp(cam.m_Lens.FieldOfView, fov, lerpSpeed);
-        camPos.transform.localPosition = Vector3.Lerp(camPos.transform.localPosition, new Vector3(0, 0, dist), lerpSpeed);
+        if (cam != null)
+        {
+            cam.m_Lens.FieldOfView = Mathf.Lerp(cam.m_Lens.FieldOfView, fov, lerpSpeed);
+            camPos.transform.localPosition = Vector3.Lerp(camPos.transform.localPosition, new Vector3(0, 0, dist), lerpSpeed);
+        }
     }
-
 }
