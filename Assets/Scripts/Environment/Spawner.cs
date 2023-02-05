@@ -67,12 +67,12 @@ public class Spawner : MonoBehaviour
         float score = ScoreManager.GetInstance().GetTotalCost();
 
         // to select : cooldown, speed
-        if (score > 40000)
+        if (score > 100000)
         {
             selectedCooldown = cooldown * 0.01f;
             selectedSpeed = speed * 5f;
         }
-        else if (score > 20000)
+        else if (score > 30000)
         {
             selectedCooldown = cooldown * 0.1f;
             selectedSpeed = speed * 3f;

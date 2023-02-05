@@ -1,8 +1,4 @@
-using System.Collections;
-using System.Collections.Generic;
-using TMPro;
 using UnityEngine;
-using UnityEngine.UI;
 
 public class GameStart : MonoBehaviour
 {
@@ -13,6 +9,8 @@ public class GameStart : MonoBehaviour
     public GameObject car;
     public GameObject bill;
     public GameObject tuto;
+
+    public GameObject lifeUI;
 
     public GameObject player;
 
@@ -64,6 +62,7 @@ public class GameStart : MonoBehaviour
         if (isStarted)
             return;
 
+        lifeUI.SetActive(true);
         isStarted = true;
         PlayerCamera.enabled = true;
         CarCamera.enabled = false;

@@ -1,5 +1,3 @@
-using System.Collections;
-using UnityEditor.SearchService;
 using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.SceneManagement;
@@ -13,9 +11,16 @@ public class PlayerController : MonoBehaviour
     public GameObject hitVFX;
     public Mesh tree3life;
     public Mesh tree2life;
+    public Mesh tree1life;
     public Image deathFade;
 
-    public Mesh tree1life;
+    public GameObject infiniteLifeUI;
+    public GameObject finitLifeUI;
+    public GameObject life1UI;
+    public GameObject life2UI;
+    public GameObject life3UI;
+
+
 
     private int life = 3;
 
@@ -65,7 +70,12 @@ public class PlayerController : MonoBehaviour
     {
         hitVFX.SetActive(true);
         life--;
-        if (life == 2)
+        UpdateLifeUI();
+        if (life >= 3)
+        {
+            treeMeshFilter.mesh = tree3life;
+        }
+        else if (life == 2)
         {
             treeMeshFilter.mesh = tree2life;
         }
@@ -80,7 +90,45 @@ public class PlayerController : MonoBehaviour
             gameObject.layer = LayerMask.NameToLayer("Ragdoll");
             deathFade.DOFade(1, 6f).OnComplete(() => SceneManager.LoadScene("EndScene"));
         }
+    }
 
+    private void UpdateLifeUI()
+    {
+        if (life1UI == null || life2UI == null || life3UI == null)
+            return;
+        if (life >= 3)
+        {
+            life3UI.SetActive(true);
+            life2UI.SetActive(true);
+            life1UI.SetActive(true);
+        }
+        else if (life == 2)
+        {
+            life3UI.SetActive(false);
+            life2UI.SetActive(true);
+            life1UI.SetActive(true);
+        }
+        else if (life == 1)
+        {
+            life3UI.SetActive(false);
+            life2UI.SetActive(false);
+            life1UI.SetActive(true);
+        }
+        else if (life == 0)
+        {
+            life3UI.SetActive(false);
+            life2UI.SetActive(false);
+            life1UI.SetActive(false);
+        }
+    }
+
+    public void OnToggleInfinitLife()
+    {
+        if (infiniteLifeUI == null || finitLifeUI == null)
+            return;
+        life = 9999;
+        infiniteLifeUI.SetActive(true);
+        finitLifeUI.SetActive(false);
     }
 
 }
